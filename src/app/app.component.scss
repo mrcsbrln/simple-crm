@@ -1,8 +1,27 @@
-.example-icon {
-  padding: 0 14px;
+@import '../styles.scss';
+
+ul{
+  list-style: none;
+  li {
+    @include dFlex($jc: flex-start, $g: 4px);
+    cursor: pointer;
+    padding: 16px;
+    &:hover{
+      background-color: $lightgray;
+    }
+  }
+
 }
-.example-spacer {
-  flex: 1 1 auto;
+
+.logo-container {
+  border-bottom: 1px solid $lightgray;
+  padding: 0 16px;
+  min-height: 56px;
+  @include dFlex();
+}
+
+mat-toolbar, mat-toolbar-row {
+  min-height: 56px;
 }
 
 .mat-drawer-container {
@@ -16,3 +35,4 @@
 .sidenav {
   width: 300px;
 }
+
