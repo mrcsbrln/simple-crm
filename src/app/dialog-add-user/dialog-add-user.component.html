@@ -2,16 +2,43 @@
 <mat-dialog-content>
   <div class="input-container">
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Placeholder" />
-      <mat-hint>Firstname</mat-hint>
+      <mat-label>Firstname</mat-label>
+      <input matInput />
+      <!-- <mat-hint>Firstname</mat-hint> -->
     </mat-form-field>
     <mat-form-field appearance="outline">
-        <mat-label>Outline form field</mat-label>
+      <mat-label>Lastname</mat-label>
+      <input matInput/>
+      <!-- <mat-hint>Lastname</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Adress</mat-label>
         <input matInput placeholder="Placeholder" />
-        <mat-hint>Firstname</mat-hint>
+        <!-- <mat-hint>Lastname</mat-hint> -->
       </mat-form-field>
-    </div>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+        <mat-label>Adress</mat-label>
+        <input matInput placeholder="Placeholder" />
+        <!-- <mat-hint>Lastname</mat-hint> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Adress</mat-label>
+        <input matInput placeholder="Placeholder" />
+        <!-- <mat-hint>Lastname</mat-hint> -->
+      </mat-form-field>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button>No Thanks</button>
