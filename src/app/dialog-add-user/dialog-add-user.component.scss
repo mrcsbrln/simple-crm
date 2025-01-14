@@ -1,1 +1,15 @@
 @import '../../styles.scss';
+
+.wrapper {
+    @include dFlex($fd: column, $ai: flex-start, $g:16px);
+}
+
+.field-wrapper {
+    @include dFlex($jc: space-between, $g: 16px);
+    margin-top: 4px;
+}
+
+.form-btns {
+    align-self: flex-end;
+}
+
