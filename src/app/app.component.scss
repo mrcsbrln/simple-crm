@@ -1,18 +1,5 @@
 @import '../styles.scss';
 
-ul{
-  list-style: none;
-  li {
-    @include dFlex($jc: flex-start, $g: 4px);
-    cursor: pointer;
-    padding: 16px;
-    &:hover{
-      background-color: $lightgray;
-    }
-  }
-
-}
-
 .logo-container {
   border-bottom: 1px solid $lightgray;
   padding: 0 16px;
@@ -40,3 +27,15 @@ mat-toolbar, mat-toolbar-row {
   width: 300px;
 }
 
+ul{
+  list-style: none;
+  li {
+    @include dFlex($jc: flex-start, $g: 4px);
+    cursor: pointer;
+    padding: 16px;
+    &:hover{
+      background-color: $lightgray;
+    }
+  }
+
+}
