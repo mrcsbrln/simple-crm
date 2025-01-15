@@ -14,6 +14,7 @@ import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.compo
 })
 export class UserComponent {
   readonly dialog = inject(MatDialog);
+
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }

@@ -9,11 +9,11 @@ export class User implements UserInterface {
     zipCode: number | undefined;
 
     constructor(data?: UserInterface) {
-        this.firstName = data?.firstName || undefined;
-        this.lastName = data?.lastName || undefined;
-        this.dateOfBirth = data?.dateOfBirth || undefined;
-        this.address = data?.address || undefined;
-        this.city = data?.city || undefined;
-        this.zipCode = data?.zipCode || undefined;
+        this.firstName = data?.firstName;
+        this.lastName = data?.lastName;
+        this.dateOfBirth = data?.dateOfBirth;
+        this.address = data?.address;
+        this.city = data?.city;
+        this.zipCode = data?.zipCode;
     }
 }
