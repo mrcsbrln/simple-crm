@@ -24,4 +24,8 @@ import { User } from '../../models/user.class';
 })
 export class DialogAddUserComponent {
   user = new User();
+
+  saveUser() {
+    console.log(this.user);
+  }
 }
