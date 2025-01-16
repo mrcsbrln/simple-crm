@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
 import { UserService } from '../../services/user.service';
@@ -18,15 +19,16 @@ import { UserService } from '../../services/user.service';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatProgressBarModule,
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
   providers: [provideNativeDateAdapter()],
 })
 export class DialogAddUserComponent {
+  userService: UserService = inject(UserService);
   user = new User();
   dateOfBirth!: Date;
-  private userService: UserService = inject(UserService);
 
   createUser() {
     const newUser: User = new User({

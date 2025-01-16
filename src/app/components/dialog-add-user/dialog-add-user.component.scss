@@ -13,6 +13,14 @@ mat-dialog-content {
     @include dFlex($fd: column, $ai: flex-start);
 }
 
+mat-progress-bar {
+    position: relative;
+    top: -20px;
+    left: -24px;
+    right: -24px;
+    width: calc(100% + 48px);
+}
+
 
 
 
