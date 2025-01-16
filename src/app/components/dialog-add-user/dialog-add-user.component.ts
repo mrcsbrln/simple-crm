@@ -28,7 +28,7 @@ export class DialogAddUserComponent {
   dateOfBirth!: Date;
   private userService: UserService = inject(UserService);
 
-  async createUser() {
+  createUser() {
     const newUser: User = new User({
       firstName: this.user.firstName,
       lastName: this.user.lastName,

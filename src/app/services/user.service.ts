@@ -11,8 +11,8 @@ export class UserService {
 
   async addUser(user: User) {
     try {
-      const userRef = await addDoc(this.getUsersRef(), user);
-      console.log('Document written with ID:', userRef?.id);
+      await addDoc(this.getUsersRef(), user);
+      console.log('User created');
     } catch (err) {
       console.error(err);
     }
