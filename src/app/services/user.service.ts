@@ -7,7 +7,6 @@ import { User } from '../models/user.class';
 })
 export class UserService {
   private firestore: Firestore = inject(Firestore);
-  private usersCollection = collection(this.firestore, 'users');
 
   async addUser(user: User) {
     try {
