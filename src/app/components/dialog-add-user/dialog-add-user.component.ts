@@ -25,16 +25,17 @@ import { UserService } from '../../services/user.service';
 })
 export class DialogAddUserComponent {
   user = new User();
+  dateOfBirth!: Date;
   private userService: UserService = inject(UserService);
 
   async createUser() {
     const newUser: User = new User({
-      firstName: 'Max',
-      lastName: 'Mustermann',
-      dateOfBirth: new Date(1990, 1, 1),
-      address: 'Musterstraße 1',
-      city: 'Musterstadt',
-      zipCode: 12345,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      dateOfBirth: this.dateOfBirth.getTime(),
+      address: this.user.address,
+      city: this.user.city,
+      zipCode: this.user.zipCode,
     });
 
     this.userService.addUser(newUser);

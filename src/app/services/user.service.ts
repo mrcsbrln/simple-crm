@@ -9,8 +9,6 @@ export class UserService {
   private firestore: Firestore = inject(Firestore);
   private usersCollection = collection(this.firestore, 'users');
 
-  constructor() {}
-
   async addUser(user: User) {
     try {
       const userRef = await addDoc(this.getUsersRef(), user);
