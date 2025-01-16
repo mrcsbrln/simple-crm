@@ -10,7 +10,7 @@ export class UserService {
 
   async addUser(user: User) {
     try {
-      await addDoc(this.getUsersRef(), user);
+      await addDoc(this.getUsersRef(), user.toJSON());
       console.log('User created');
     } catch (err) {
       console.error(err);

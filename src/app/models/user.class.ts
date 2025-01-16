@@ -16,4 +16,15 @@ export class User implements UserInterface {
         this.city = data?.city;
         this.zipCode = data?.zipCode;
     }
+
+    toJSON() {
+        return {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            dateOfBirth: this.dateOfBirth,
+            address: this.address,
+            city: this.city,
+            zipCode: this.zipCode,
+        }
+    }
 }
