@@ -1,4 +1,4 @@
-import { User as UserInterface } from "../app/interfaces/user.interface";
+import { User as UserInterface } from "../interfaces/user.interface";
 
 export class User implements UserInterface {
     firstName: string | undefined;

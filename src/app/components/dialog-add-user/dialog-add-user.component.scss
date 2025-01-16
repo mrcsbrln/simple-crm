@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import '../../../styles.scss';
 
 .field-wrapper {
     @include dFlex($jc: space-between, $g: 16px);

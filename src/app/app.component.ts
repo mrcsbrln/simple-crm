@@ -1,11 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 
 
 @Component({
@@ -23,5 +20,4 @@ import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 export class AppComponent {
   title = 'simple-crm';
   showFiller = false;
-  firestore: Firestore = inject(Firestore);
 }

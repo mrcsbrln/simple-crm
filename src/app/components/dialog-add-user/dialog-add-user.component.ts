@@ -7,14 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  addDoc,
-} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -32,9 +25,18 @@ import { Observable } from 'rxjs';
 })
 export class DialogAddUserComponent {
   user = new User();
-  private firestore: Firestore = inject(Firestore);
+  private userService: UserService = inject(UserService);
 
-  saveUser() {
-    console.log(this.user);
+  async createUser() {
+    const newUser: User = new User({
+      firstName: 'Max',
+      lastName: 'Mustermann',
+      dateOfBirth: new Date(1990, 1, 1),
+      address: 'Musterstraße 1',
+      city: 'Musterstadt',
+      zipCode: 12345,
+    });
+
+    this.userService.addUser(newUser);
   }
 }
