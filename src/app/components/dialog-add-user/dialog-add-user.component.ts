@@ -42,10 +42,7 @@ export class DialogAddUserComponent {
       zipCode: this.user.zipCode,
     });
 
-    this.userService.addUser(newUser);
+    this.userService.addUser(newUser, this.dialogRef);
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
-  }
 }

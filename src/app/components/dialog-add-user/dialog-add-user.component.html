@@ -68,14 +68,13 @@
     </mat-form-field>
   </div>
   <mat-dialog-actions class="form-btns">
-    <button [disabled]="userService.loading()" mat-button>
+    <button [mat-dialog-close]="" [disabled]="userService.loading()" mat-button>
       No Thanks
     </button>
     <button
       [disabled]="userService.loading()"
       mat-button
       (click)="createUser()"
-      [mat-dialog-close]=""
       cdkFocusInitial
     >
       Ok

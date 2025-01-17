@@ -1,6 +1,8 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +11,7 @@ export class UserService {
   private firestore: Firestore = inject(Firestore);
   loading = signal(false);
 
-  async addUser(user: User) {
+  async addUser(user: User, dialogRef: MatDialogRef<DialogAddUserComponent>) {
     this.loading.set(true);
     try {
       await addDoc(this.getUsersRef(), user.toJSON());
@@ -17,9 +19,8 @@ export class UserService {
     } catch (err) {
       console.error(err);
     } finally {
-      setTimeout(() => {
-        this.loading.set(false);
-      }, 3000);
+      dialogRef.close();
+      this.loading.set(false);
     }
   }
 
