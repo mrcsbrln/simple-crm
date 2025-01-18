@@ -1,4 +1,9 @@
-table {
-    width: 100%;
-  }
-  
+@import '../../../../styles.scss';
+
+
+mat-row {
+    cursor: pointer;
+    &:hover {
+        background-color: lightgray;
+    }
+}
