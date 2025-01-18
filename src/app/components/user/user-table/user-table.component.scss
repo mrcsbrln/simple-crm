@@ -1,9 +1,38 @@
 @import '../../../../styles.scss';
 
+mat-card-content {
+    padding: 0;
+}
 
-mat-row {
-    cursor: pointer;
-    &:hover {
-        background-color: lightgray;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    tr {
+        border-bottom: 1px solid $lightgray;
+        &:first-child {
+            &:hover {
+                background-color: unset;
+            }
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+        &:hover {
+            background: $lightgray;
+        }
+    }
+    th {
+        color: gray;
+        text-align: start;
+        &:first-child {
+            padding-left: 16px;
+        }
+    }
+    td {
+        padding: 16px 0;
+        cursor: pointer;
+        &:first-child {
+            padding-left: 16px;
+        }
     }
 }

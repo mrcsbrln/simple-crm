@@ -2,8 +2,10 @@
 
 $lightgray: rgba(
   $color: #000000,
-  $alpha: 0.01,
+  $alpha: 0.1,
 );
+$accentColor:rgb(215, 227, 255);
+
 
 html,
 body {
@@ -29,12 +31,8 @@ body {
 }
 
 :root {
-  @include mat.table-overrides((
-    header-headline-color: grey,
-    row-item-outline-color: $lightgray,
-  ));
   @include mat.toolbar-overrides((
-    container-background-color: grey,
+    container-background-color: $accentColor,
     container-text-color: #fff,
   ));
 }
