@@ -1,5 +1,5 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Injectable, Signal, inject, signal } from '@angular/core';
+import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
@@ -9,6 +9,7 @@ import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add
 })
 export class UserService {
   private firestore: Firestore = inject(Firestore);
+  users: Signal<User[]> = signal([]);
   loading = signal(false);
 
   async addUser(user: User, dialogRef: MatDialogRef<DialogAddUserComponent>) {
@@ -22,6 +23,12 @@ export class UserService {
       dialogRef.close();
       this.loading.set(false);
     }
+  }
+
+  getUserCollection() {
+    const userCollection = collection(this.firestore, 'users');
+    const userDocument = collectionData(userCollection, { idField: 'id' });
+    this.users.set(userDocument);
   }
 
   getUsersRef() {
