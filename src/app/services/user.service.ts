@@ -3,6 +3,7 @@ import { Firestore, collection, addDoc, collectionData } from '@angular/fire/fir
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,10 @@ export class UserService {
   users$;
   loading = signal(false);
 
-  constructor(){
-    this.users$ = collectionData(this.getUsersRef());
+  constructor() {
+    this.users$ = collectionData(this.getUsersRef()).pipe(
+      map((data: any[]) => data.map(doc => User.fromJSON(doc)))
+    );
   }
 
   async addUser(user: User, dialogRef: MatDialogRef<DialogAddUserComponent>) {
