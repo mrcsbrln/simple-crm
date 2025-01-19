@@ -7,8 +7,8 @@
         <th>City</th>
       </tr>
       @for(user of (this.userService.users$) | async; track user) {
-      <tr>
-        <td>{{ user.lastName }}</td>
+      <tr [routerLink]="['/user/' + user.id]">
+        <td>{{user.firstName}} {{ user.lastName }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.city }}</td>
       </tr>

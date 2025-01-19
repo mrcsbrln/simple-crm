@@ -14,7 +14,7 @@ export class UserService {
   loading = signal(false);
 
   constructor() {
-    this.users$ = collectionData(this.getUsersRef()).pipe(
+    this.users$ = collectionData(this.getUsersRef(), { idField: 'id' }).pipe(
       map((data: any[]) => data.map(doc => new User(doc)))
     );
   }
