@@ -6,21 +6,13 @@
         <th>Email</th>
         <th>City</th>
       </tr>
+      @for(user of (this.userService.users$) | async; track user) {
       <tr>
-        <td>Max Mustermann</td>
+        <td>{{ user['lastName'] }}</td>
         <td>email(at)email.com</td>
-        <td>Musterstadt</td>
+        <td>{{ user['city'] }}</td>
       </tr>
-      <tr>
-        <td>Max Mustermann</td>
-        <td>email(at)email.com</td>
-        <td>Musterstadt</td>
-      </tr>
-      <tr>
-        <td>Max Mustermann</td>
-        <td>email(at)email.com</td>
-        <td>Musterstadt</td>
-      </tr>
+      }
     </table>
   </mat-card-content>
 </mat-card>

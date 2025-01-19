@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
+import { Component, inject } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { UserService } from '../../../services/user.service';
+import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-user-table',
-  imports: [MatCardModule],
+  imports: [AsyncPipe, CommonModule, MatCardModule],
   templateUrl: './user-table.component.html',
-  styleUrl: './user-table.component.scss'
+  styleUrl: './user-table.component.scss',
 })
-
 export class UserTableComponent {
-  
+  userService: UserService = inject(UserService);
 }
