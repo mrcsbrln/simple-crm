@@ -1,4 +1,3 @@
-import { DocumentData } from '@angular/fire/firestore';
 import { User as UserInterface } from '../interfaces/user.interface';
 
 export class User implements UserInterface {
@@ -27,16 +26,5 @@ export class User implements UserInterface {
       city: this.city,
       zipCode: this.zipCode,
     };
-  }
-
-  public static fromJSON(data: DocumentData) {
-    const user = new User();
-    user.firstName = data['firstName'];
-    user.lastName = data['lastName'];
-    user.dateOfBirth = data['dateOfBirth'];
-    user.address = data['address'];
-    user.city = data['city'];
-    user.zipCode = data['zipCode'];
-    return user;
   }
 }

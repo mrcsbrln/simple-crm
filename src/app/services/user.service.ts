@@ -15,7 +15,7 @@ export class UserService {
 
   constructor() {
     this.users$ = collectionData(this.getUsersRef()).pipe(
-      map((data: any[]) => data.map(doc => User.fromJSON(doc)))
+      map((data: any[]) => data.map(doc => new User(doc)))
     );
   }
 
