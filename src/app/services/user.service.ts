@@ -29,11 +29,6 @@ export class UserService {
     }
   }
 
-  // getUserCollection() {
-  //   const userCollection = collection(this.firestore, 'users');
-  //   const userDocument = collectionData(userCollection, { idField: 'id' });
-  // }
-
   getUsersRef() {
     return collection(this.firestore, 'users');
   }
