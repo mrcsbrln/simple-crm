@@ -9,7 +9,7 @@
       @for(user of (this.userService.users$) | async; track user) {
       <tr>
         <td>{{ user.lastName }}</td>
-        <td>email(at)email.com</td>
+        <td>{{ user.email }}</td>
         <td>{{ user.city }}</td>
       </tr>
       }

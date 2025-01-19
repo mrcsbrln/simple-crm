@@ -23,6 +23,15 @@
       <!-- <mat-hint>Lastname</mat-hint> -->
     </mat-form-field>
   </div>
+  <mat-form-field class="w100" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input
+      [disabled]="userService.loading()"
+      [(ngModel)]="user.email"
+      matInput
+    />
+    <!-- <mat-hint>Lastname</mat-hint> -->
+  </mat-form-field>
   <mat-form-field class="w100">
     <mat-label>Date of birth</mat-label>
     <input
@@ -68,7 +77,7 @@
     </mat-form-field>
   </div>
   <mat-dialog-actions class="form-btns">
-    <button [mat-dialog-close]="" [disabled]="userService.loading()" mat-button>
+    <button (click)="onNoClick()" [disabled]="userService.loading()" mat-button>
       No Thanks
     </button>
     <button

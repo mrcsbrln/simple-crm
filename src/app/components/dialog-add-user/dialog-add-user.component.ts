@@ -36,6 +36,7 @@ export class DialogAddUserComponent {
     const newUser: User = new User({
       firstName: this.user.firstName,
       lastName: this.user.lastName,
+      email: this.user.email,
       dateOfBirth: this.dateOfBirth.getTime(),
       address: this.user.address,
       city: this.user.city,
@@ -45,4 +46,7 @@ export class DialogAddUserComponent {
     this.userService.addUser(newUser, this.dialogRef);
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
