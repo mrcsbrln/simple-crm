@@ -1,4 +1,11 @@
 @use '../../../styles.scss' as *;
+@use '@angular/material' as mat;
+
+:host {
+    @include mat.icon-overrides((
+      color: #fff,
+    ));
+  }
 
 .add-user-btn {
     position: absolute;

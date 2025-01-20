@@ -1,5 +1,5 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
+  <mat-drawer [opened]="true" #drawer class="sidenav" mode="side">
     <div class="logo-container">Logo</div>
     <ul>
       <li routerLink="/" routerLinkActive="active-link">
@@ -11,13 +11,11 @@
     </ul>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
-    <mat-toolbar>
-      <mat-icon fontIcon="menu"></mat-icon>
-      <span>Simple CRM</span>
-    </mat-toolbar>
-    <div class="router-container">
-      <router-outlet />
-    </div>
+  <mat-toolbar>
+    <mat-icon fontIcon="menu"></mat-icon>
+    <span>Simple CRM</span>
+  </mat-toolbar>
+  <div class="router-container">
+    <router-outlet />
   </div>
 </mat-drawer-container>

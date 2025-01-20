@@ -1,0 +1,26 @@
+@use "../../../../styles.scss" as *;
+
+.user-details-header {
+  background-color: $stoneGrey;
+  min-height: 30vh;
+  padding: 16px;
+  @include dFlex($jc: flex-start, $ai: flex-end);
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+}
+
+.user-details {
+  @include dFlex($g: 16px);
+}
+
+.user-details-text {
+    @include dFlex($fd: column, $ai: flex-start, $g: 4px);
+    color: #fff;
+    h2 {
+        margin: 0;
+    }
+  }

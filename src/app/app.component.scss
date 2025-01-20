@@ -1,10 +1,10 @@
 @use '../styles.scss' as *;
 
 .logo-container {
-  border-bottom: 1px solid $lightgray;
-  padding: 0 16px;
+  padding: 0;
   min-height: 64px;
   @include dFlex();
+  background-color: $stoneGrey;
 }
 
 mat-toolbar, mat-toolbar-row {
@@ -25,6 +25,7 @@ mat-toolbar, mat-toolbar-row {
 
 .sidenav {
   width: 300px;
+  background-color: $paleAqua;
 }
 
 ul{

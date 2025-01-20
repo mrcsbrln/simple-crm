@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, docData } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
@@ -35,4 +35,9 @@ export class UserService {
   getUsersRef() {
     return collection(this.firestore, 'users');
   }
+
+  // getUser(id: string): {
+  //   const userDocRef = doc(this.firestore, `users/${id}`);
+  //   return docData(userDocRef, { idField: 'id' });
+  // }
 }
