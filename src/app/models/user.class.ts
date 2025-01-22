@@ -1,17 +1,18 @@
 import { User as UserInterface } from '../interfaces/user.interface';
 
 export class User implements UserInterface {
-  id: string | undefined;
-  firstName: string | undefined;
-  lastName: string | undefined;
-  email: string | undefined;
-  dateOfBirth: number | undefined;
-  address: string | undefined;
-  city: string | undefined;
-  zipCode: number | undefined;
+  id;
+  firstName;
+  lastName;
+  email;
+  dateOfBirth;
+  address;
+  city;
+  zipCode;
 
-  constructor(data?: UserInterface) {
-    (this.id = data?.id), (this.firstName = data?.firstName);
+  constructor(data?: Partial<UserInterface>) {
+    this.id = data?.id;
+    this.firstName = data?.firstName;
     this.lastName = data?.lastName;
     this.email = data?.email;
     this.dateOfBirth = data?.dateOfBirth;

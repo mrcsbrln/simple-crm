@@ -1,28 +1,36 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, docData } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  addDoc,
+  doc,
+  onSnapshot,
+} from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private firestore: Firestore = inject(Firestore);
-  users$;
+  users: User[] = [];
+  unsubUser;
   loading = signal(false);
 
   constructor() {
-    this.users$ = collectionData(this.getUsersRef(), { idField: 'id' }).pipe(
-      map((data: any[]) => data.map(doc => new User(doc)))
-    );
+    this.unsubUser = this.subUsersCollection();
+  }
+
+  ngOnDestroy () {
+    this.unsubUser();
   }
 
   async addUser(user: User, dialogRef: MatDialogRef<DialogAddUserComponent>) {
     this.loading.set(true);
     try {
-      await addDoc(this.getUsersRef(), user.toJSON());
+      await addDoc(this.getUsersCollectionRef(), user.toJSON());
       console.log('User created');
     } catch (err) {
       console.error(err);
@@ -32,12 +40,22 @@ export class UserService {
     }
   }
 
-  getUsersRef() {
+  getUsersCollectionRef() {
     return collection(this.firestore, 'users');
   }
 
-  // getUser(id: string): {
-  //   const userDocRef = doc(this.firestore, `users/${id}`);
-  //   return docData(userDocRef, { idField: 'id' });
-  // }
+  getUserDocRef(userId: string) {
+    return doc(collection(this.firestore, 'users'), userId);
+  }
+
+  subUsersCollection() {
+    return onSnapshot(this.getUsersCollectionRef(), (snapshot) => {
+      this.users = [];
+      snapshot.forEach((doc) => {
+        this.users.push(new User(doc.data()));
+      });
+    });
+  }
+
+  subUser(userId: string) {}
 }

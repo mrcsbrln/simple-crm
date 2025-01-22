@@ -15,7 +15,6 @@ export class UserDetailsComponent implements OnInit {
   userService: UserService = inject(UserService);
 
   userId: string = '';
-  userData?: User;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -23,11 +22,4 @@ export class UserDetailsComponent implements OnInit {
       console.log('User ID:', this.userId);
     });
   }
-
-  // loadUserData(): void {
-  //   this.userService.getUser(this.userId).subscribe((user) => {
-  //     this.userData = user;
-  //     console.log('User Data:', this.userData);
-  //   });
-  // }
 }
