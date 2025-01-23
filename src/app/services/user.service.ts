@@ -23,7 +23,7 @@ export class UserService {
     this.unsubUser = this.subUsersCollection();
   }
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.unsubUser();
   }
 
@@ -57,5 +57,9 @@ export class UserService {
     });
   }
 
-  subUser(userId: string) {}
+  subUser(userId: string) {
+    return onSnapshot(this.getUserDocRef(userId), (docSnapshot) => {
+      new User(docSnapshot.data());
+    });
+  }
 }

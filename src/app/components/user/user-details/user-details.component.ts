@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
-import { User } from '../../../interfaces/user.interface';
 
 @Component({
   selector: 'app-user-details',

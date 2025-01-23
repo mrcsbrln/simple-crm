@@ -5,7 +5,7 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
 
 export const routes: Routes = [
     {path: '', component: DashboardComponent},
-    {path: 'dashbboard', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
     {path: 'user', component: UserComponent},
     {path: 'user/:id', component: UserDetailsComponent},
 ];
