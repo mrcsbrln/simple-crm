@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, OnDestroy, inject, signal } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -13,18 +13,19 @@ import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserService implements OnDestroy {
   private firestore: Firestore = inject(Firestore);
   users: User[] = [];
-  unsubUser;
+  unsubUsers;
+
   loading = signal(false);
 
   constructor() {
-    this.unsubUser = this.subUsersCollection();
+    this.unsubUsers = this.subUsersCollection();
   }
 
   ngOnDestroy() {
-    this.unsubUser();
+    this.unsubUsers();
   }
 
   async addUser(user: User, dialogRef: MatDialogRef<DialogAddUserComponent>) {
@@ -44,22 +45,14 @@ export class UserService {
     return collection(this.firestore, 'users');
   }
 
-  getUserDocRef(userId: string) {
-    return doc(collection(this.firestore, 'users'), userId);
-  }
-
   subUsersCollection() {
     return onSnapshot(this.getUsersCollectionRef(), (snapshot) => {
       this.users = [];
       snapshot.forEach((doc) => {
-        this.users.push(new User(doc.data()));
+        const userData = doc.data();
+        userData['id'] =  doc.id;
+        this.users.push(new User(userData));
       });
-    });
-  }
-
-  subUser(userId: string) {
-    return onSnapshot(this.getUserDocRef(userId), (docSnapshot) => {
-      new User(docSnapshot.data());
     });
   }
 }

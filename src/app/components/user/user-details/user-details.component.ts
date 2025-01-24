@@ -11,14 +11,15 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
-  userService: UserService = inject(UserService);
-
+  userService: UserService = inject(UserService)
   userId: string = '';
+  currentUser: any;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.userId = params.get('id') || '';
       console.log('User ID:', this.userId);
     });
+    this.currentUser = this.userService.users.find(user => user.id === this.userId);
   }
 }
