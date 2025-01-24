@@ -2,17 +2,17 @@
   <div class="user-details">
     <img src="/img/default_profile_picture.png" />
     <div class="user-details-text">
-      <h2>{{currentUser.firstName}}</h2>
-      <span>email(at)email.de</span>
+      <h2>{{currentUser?.firstName}}</h2>
+      <span>{{ currentUser?.email }}</span>
     </div>
   </div>
 </mat-card>
 <mat-card class="mt32" appearance="outlined">
   <mat-card-header>
-    <mat-card-title>Adress</mat-card-title>
+    <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-card-subtitle>Musterstr. 1</mat-card-subtitle>
-    <mat-card-subtitle>Musterstr. 1</mat-card-subtitle>
+    <mat-card-subtitle>{{currentUser?.address}}</mat-card-subtitle>
+    <mat-card-subtitle>{{currentUser?.zipCode}} {{currentUser?.city}}</mat-card-subtitle>
   </mat-card-content>
 </mat-card>
