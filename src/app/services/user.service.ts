@@ -1,10 +1,10 @@
-import { Injectable, OnDestroy, inject, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import {
   Firestore,
   collection,
   addDoc,
-  doc,
   onSnapshot,
+  doc,
 } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -13,9 +13,9 @@ import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy {
+export class UserService {
   private firestore: Firestore = inject(Firestore);
-  users: User[] = [];
+  users = signal<User[]>([]);
   unsubUsers;
 
   loading = signal(false);
@@ -47,12 +47,13 @@ export class UserService implements OnDestroy {
 
   subUsersCollection() {
     return onSnapshot(this.getUsersCollectionRef(), (snapshot) => {
-      this.users = [];
+      const usersList: User[] = [];
       snapshot.forEach((doc) => {
         const userData = doc.data();
         userData['id'] =  doc.id;
-        this.users.push(new User(userData));
+        usersList.push(new User(userData));
       });
+      this.users.set(usersList);
     });
   }
 }

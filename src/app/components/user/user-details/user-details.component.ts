@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
@@ -21,8 +21,10 @@ export class UserDetailsComponent {
       this.userId = params.get('id') || '';
       console.log('User ID:', this.userId);
     });
-    this.currentUser = this.userService.users.find(
-      (user) => user.id === this.userId
-    );
+    effect(() => {
+      this.currentUser = this.userService
+        .users()
+        .find((user) => user.id === this.userId);
+    });
   }
 }
