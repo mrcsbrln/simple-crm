@@ -2,17 +2,26 @@
   <div class="user-details">
     <img src="/img/default_profile_picture.png" />
     <div class="user-details-text">
-      <h2>{{currentUser?.firstName}}</h2>
+      <h2>{{ currentUser?.firstName }}</h2>
       <span>{{ currentUser?.email }}</span>
     </div>
   </div>
 </mat-card>
 <mat-card class="mt32" appearance="outlined">
   <mat-card-header>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-btn">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="editMenu()">Edit</button>
+    </mat-menu>
+
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-card-subtitle>{{currentUser?.address}}</mat-card-subtitle>
-    <mat-card-subtitle>{{currentUser?.zipCode}} {{currentUser?.city}}</mat-card-subtitle>
+    <mat-card-subtitle>{{ currentUser?.address }}</mat-card-subtitle>
+    <mat-card-subtitle
+      >{{ currentUser?.zipCode }} {{ currentUser?.city }}</mat-card-subtitle
+    >
   </mat-card-content>
 </mat-card>

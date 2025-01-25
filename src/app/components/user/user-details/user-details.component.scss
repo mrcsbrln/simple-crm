@@ -1,5 +1,11 @@
 @use "../../../../styles.scss" as *;
 
+.more-vert-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .user-details-header {
   background-color: $stoneGrey;
   min-height: 30vh;
