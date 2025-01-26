@@ -5,7 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
-import { User } from '../../../interfaces/user.interface';
+import { User as UserInterface } from '../../../interfaces/user.interface';
+import { User } from '../../../models/user.class';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditUserComponent } from '../../dialog-edit-user/dialog-edit-user.component';
 import { DialogEditAddressComponent } from '../../dialog-edit-address/dialog-edit-address.component';
@@ -21,7 +22,7 @@ export class UserDetailsComponent {
   readonly dialog = inject(MatDialog);
   userService: UserService = inject(UserService);
   userId: string = '';
-  currentUser: User | undefined;
+  currentUser: UserInterface | undefined;
 
   constructor() {
     this.route.paramMap.subscribe((params) => {
@@ -41,6 +42,7 @@ export class UserDetailsComponent {
   }
 
   editUser() {
-    this.dialog.open(DialogEditUserComponent)
+    const dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.currentUser = this.currentUser;
   }
 }
