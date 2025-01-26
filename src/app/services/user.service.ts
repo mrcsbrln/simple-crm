@@ -4,6 +4,7 @@ import {
   collection,
   addDoc,
   onSnapshot,
+  updateDoc,
   doc,
 } from '@angular/fire/firestore';
 import { User } from '../models/user.class';
@@ -41,8 +42,23 @@ export class UserService {
     }
   }
 
+  async update(userId: string, item: {}) {
+    this.loading.set(true);
+    try {
+      await updateDoc(this.getUserDocRef(userId), item);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
   getUsersCollectionRef() {
     return collection(this.firestore, 'users');
+  }
+
+  getUserDocRef(userId: string) {
+    return doc(collection(this.firestore, 'users'), userId);
   }
 
   subUsersCollection() {
@@ -50,7 +66,7 @@ export class UserService {
       const usersList: User[] = [];
       snapshot.forEach((doc) => {
         const userData = doc.data();
-        userData['id'] =  doc.id;
+        userData['id'] = doc.id;
         usersList.push(new User(userData));
       });
       this.users.set(usersList);
