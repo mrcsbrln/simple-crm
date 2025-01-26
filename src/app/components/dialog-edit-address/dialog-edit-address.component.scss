@@ -1,0 +1,26 @@
+@use '../../../styles.scss' as *;
+
+.field-wrapper {
+    @include dFlex($jc: space-between, $g: 16px);
+    margin-top: 4px;
+}
+
+.form-btns {
+    align-self: flex-end;
+}
+
+mat-dialog-content {
+    @include dFlex($fd: column, $ai: flex-start);
+}
+
+mat-progress-bar {
+    position: relative;
+    top: -20px;
+    left: -24px;
+    right: -24px;
+    width: calc(100% + 48px);
+}
+
+
+
+

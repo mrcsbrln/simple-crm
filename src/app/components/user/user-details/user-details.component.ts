@@ -6,6 +6,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditUserComponent } from '../../dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from '../../dialog-edit-address/dialog-edit-address.component';
 
 @Component({
   selector: 'app-user-details',
@@ -15,6 +18,7 @@ import { User } from '../../../interfaces/user.interface';
 })
 export class UserDetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
+  readonly dialog = inject(MatDialog);
   userService: UserService = inject(UserService);
   userId: string = '';
   currentUser: User | undefined;
@@ -31,7 +35,12 @@ export class UserDetailsComponent {
     });
   }
 
-  editMenu() {
-    
+  editUserAddress() {
+    const dialog = this.dialog.open(DialogEditAddressComponent);
+    dialog.componentInstance.currentUser = this.currentUser;
+  }
+
+  editUser() {
+    this.dialog.open(DialogEditUserComponent)
   }
 }
