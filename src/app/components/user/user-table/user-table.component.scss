@@ -1,10 +1,13 @@
 @use '../../../../styles.scss' as *;
 
+mat-card {
+    background-color: $paleAqua;
+}
+
 mat-card-content {
     padding: 0;
     height: 80vh;
     overflow-x: scroll;
-    background-color: $paleAqua;
 }
 
 table {
