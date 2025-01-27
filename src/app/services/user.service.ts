@@ -46,24 +46,11 @@ export class UserService {
     this.loading.set(true);
     try {
       let docRef = this.getUserDocRef(userId);
-      await updateDoc(docRef, this.getCleanJSON(currentUser));
+      await updateDoc(docRef, currentUser.toJSON());
     } catch (err) {
       console.error(err);
     } finally {
       this.loading.set(false);
-    }
-  }
-
-  getCleanJSON(user: User) {
-    return {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      dateOfBirth: user.dateOfBirth,
-      address: user.address,
-      city: user.city,
-      zipCode: user.zipCode,
     }
   }
 

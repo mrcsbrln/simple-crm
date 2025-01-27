@@ -30,6 +30,7 @@ export class DialogEditUserComponent {
   dialogRef = inject(MatDialogRef<DialogEditUserComponent>);
 
   currentUser: User | undefined;
+  userId!: string;
 
   saveEdit() {}
 }

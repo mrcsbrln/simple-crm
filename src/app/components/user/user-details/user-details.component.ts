@@ -39,6 +39,7 @@ export class UserDetailsComponent {
     const dialog = this.dialog.open(DialogEditAddressComponent);
     if (this.currentUser) {
       dialog.componentInstance.currentUser = new User(this.currentUser.toJSON());
+      dialog.componentInstance.userId = this.userId;
     }
   }
 
@@ -46,6 +47,7 @@ export class UserDetailsComponent {
     const dialog = this.dialog.open(DialogEditUserComponent);
     if (this.currentUser) {
       dialog.componentInstance.currentUser = new User(this.currentUser.toJSON());
+      dialog.componentInstance.userId = this.userId;
     }
   }
 }

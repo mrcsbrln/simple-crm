@@ -19,11 +19,12 @@ export class DialogEditAddressComponent {
   dialogRef = inject(MatDialogRef<DialogEditAddressComponent>);
 
 
-  currentUser: User | undefined;
+  currentUser!: User;
+  userId!: string;
 
   saveEdit() {
-    if (this.currentUser && this.currentUser.id) {
-      this.userService.updateUser(this.currentUser, this.currentUser.id);
+    if (this.currentUser) {
+      this.userService.updateUser(this.currentUser, this.userId);
     }
   }
 }
