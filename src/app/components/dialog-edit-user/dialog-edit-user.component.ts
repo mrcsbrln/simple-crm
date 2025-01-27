@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { UserService } from '../../services/user.service';
-import { User } from '../../interfaces/user.interface';
+import { User } from '../../models/user.class';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
@@ -29,8 +29,16 @@ export class DialogEditUserComponent {
   userService: UserService = inject(UserService);
   dialogRef = inject(MatDialogRef<DialogEditUserComponent>);
 
-  currentUser: User | undefined;
+  currentUser!: User;
   userId!: string;
 
-  saveEdit() {}
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  saveEdit() {
+    if (this.currentUser) {
+      this.userService.updateUser(this.currentUser, this.userId, this.dialogRef);
+    }
+  }
 }

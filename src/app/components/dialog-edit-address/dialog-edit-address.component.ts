@@ -22,9 +22,13 @@ export class DialogEditAddressComponent {
   currentUser!: User;
   userId!: string;
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
   saveEdit() {
     if (this.currentUser) {
-      this.userService.updateUser(this.currentUser, this.userId);
+      this.userService.updateUser(this.currentUser, this.userId, this.dialogRef);
     }
   }
 }

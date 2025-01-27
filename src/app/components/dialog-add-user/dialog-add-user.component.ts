@@ -33,7 +33,8 @@ export class DialogAddUserComponent {
   dateOfBirth!: Date;
 
   createUser() {
-    const newUser: User = new User({
+    const newUser = new User({
+      id: '',
       firstName: this.user.firstName,
       lastName: this.user.lastName,
       email: this.user.email,
@@ -42,7 +43,6 @@ export class DialogAddUserComponent {
       city: this.user.city,
       zipCode: this.user.zipCode,
     });
-
     this.userService.addUser(newUser, this.dialogRef);
   }
 

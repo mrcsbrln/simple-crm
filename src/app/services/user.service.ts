@@ -10,6 +10,8 @@ import {
 import { User } from '../models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../components/dialog-add-user/dialog-add-user.component';
+import { DialogEditUserComponent } from '../components/dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from '../components/dialog-edit-address/dialog-edit-address.component';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +44,11 @@ export class UserService {
     }
   }
 
-  async updateUser(currentUser: User, userId: string) {
+  async updateUser(
+    currentUser: User,
+    userId: string,
+    dialogRef: MatDialogRef<DialogEditUserComponent, DialogEditAddressComponent>
+  ) {
     this.loading.set(true);
     try {
       let docRef = this.getUserDocRef(userId);
