@@ -56,6 +56,7 @@ export class UserService {
     } catch (err) {
       console.error(err);
     } finally {
+      dialogRef.close();
       this.loading.set(false);
     }
   }

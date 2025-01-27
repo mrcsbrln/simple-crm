@@ -4,7 +4,10 @@
   padding: 0;
   min-height: 64px;
   @include dFlex();
-  background-color: $stoneGrey;
+  background-color: $darkGrey;
+  color: $paleAqua;
+  font-weight: 900;
+  font-size: 2rem;
 }
 
 mat-toolbar, mat-toolbar-row {
@@ -26,6 +29,7 @@ mat-toolbar, mat-toolbar-row {
 .sidenav {
   width: 300px;
   background-color: $paleAqua;
+  color: $darkGrey;
 }
 
 ul{
