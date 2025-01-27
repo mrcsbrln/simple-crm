@@ -42,14 +42,28 @@ export class UserService {
     }
   }
 
-  async update(userId: string, item: {}) {
+  async updateUser(currentUser: User, userId: string) {
     this.loading.set(true);
     try {
-      await updateDoc(this.getUserDocRef(userId), item);
+      let docRef = this.getUserDocRef(userId);
+      await updateDoc(docRef, this.getCleanJSON(currentUser));
     } catch (err) {
       console.error(err);
     } finally {
       this.loading.set(false);
+    }
+  }
+
+  getCleanJSON(user: User) {
+    return {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      dateOfBirth: user.dateOfBirth,
+      address: user.address,
+      city: user.city,
+      zipCode: user.zipCode,
     }
   }
 

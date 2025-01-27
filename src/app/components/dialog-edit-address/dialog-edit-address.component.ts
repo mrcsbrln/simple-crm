@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { User } from '../../interfaces/user.interface';
+import { User } from '../../models/user.class';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -21,5 +21,9 @@ export class DialogEditAddressComponent {
 
   currentUser: User | undefined;
 
-  saveEdit() {}
+  saveEdit() {
+    if (this.currentUser && this.currentUser.id) {
+      this.userService.updateUser(this.currentUser, this.currentUser.id);
+    }
+  }
 }
